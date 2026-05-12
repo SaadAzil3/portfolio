@@ -147,11 +147,10 @@ function TimelineCard({ item, index }: { item: typeof EXPERIENCE_ITEMS[0]; index
   );
 }
 
-function Timeline({ items, itemClass, lineClass, nodeClass }: {
+function Timeline({ items, itemClass, lineClass }: {
   items: typeof EXPERIENCE_ITEMS;
   itemClass: string;
   lineClass: string;
-  nodeClass: string;
 }) {
   return (
     <div className="relative">
@@ -270,7 +269,6 @@ export default function ExperienceSection() {
             items={EXPERIENCE_ITEMS}
             itemClass="exp-item"
             lineClass="exp-line"
-            nodeClass="exp-node"
           />
         </div>
 
@@ -291,7 +289,6 @@ export default function ExperienceSection() {
             items={EDUCATION_ITEMS}
             itemClass="edu-item"
             lineClass="edu-line"
-            nodeClass="edu-node"
           />
         </div>
 
