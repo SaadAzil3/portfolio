@@ -48,8 +48,8 @@ export default function BlogSection() {
         }
       );
       gsap.fromTo('.blog-card', 
-        { x: 60, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out',
           scrollTrigger: { trigger: '.blog-carousel', start: 'top 75%' },
         }
       );
@@ -64,8 +64,8 @@ export default function BlogSection() {
       className="relative"
       style={{ zIndex: 1, background: 'var(--bg-secondary)', paddingTop: '8rem', paddingBottom: '8rem' }}
     >
-      {/* Header */}
       <div className="container-main">
+        {/* Header */}
         <div className="blog-header flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-4">
           <div>
             <span className="section-label block mb-4">// BLOG</span>
@@ -86,72 +86,64 @@ export default function BlogSection() {
             View All →
           </a>
         </div>
-      </div>
 
-      {/* Carousel */}
-      <div
-        className="blog-carousel flex gap-6 overflow-x-auto hide-scrollbar px-6 md:px-0"
-        style={{
-          scrollSnapType: 'x mandatory',
-          paddingLeft: 'max(1.5rem, calc((100vw - 1200px) / 2))',
-          paddingRight: 'max(1.5rem, calc((100vw - 1200px) / 2))',
-        }}
-      >
-        {BLOG_POSTS.map((post, i) => (
-          <a
-            key={i}
-            href={post.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="blog-card flex-shrink-0 p-6 rounded-lg transition-all duration-300 group"
-            style={{
-              minWidth: '280px',
-              maxWidth: '340px',
-              scrollSnapAlign: 'start',
-              background: 'var(--bg-primary)',
-              border: '1px solid var(--border-subtle)',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent-primary)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
-          >
-            <span
-              className="font-mono-code text-[10px]"
-              style={{ color: 'var(--text-tertiary)' }}
+        {/* Swipeable carousel on mobile, 2x2 grid from md up */}
+        <div
+          className="blog-carousel flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory -mx-6 px-6 scroll-px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 md:overflow-visible"
+        >
+          {BLOG_POSTS.map((post, i) => (
+            <a
+              key={i}
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="blog-card flex flex-col flex-shrink-0 w-[85%] md:w-auto snap-start p-6 rounded-lg transition-all duration-300 group"
+              style={{
+                background: 'var(--bg-primary)',
+                border: '1px solid var(--border-subtle)',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent-primary)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
             >
-              {post.date}
-            </span>
-            <h3
-              className="font-display text-base font-medium mt-2 line-clamp-2"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              {post.title}
-            </h3>
-            <p
-              className="text-sm mt-2 line-clamp-3 leading-relaxed"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              {post.description}
-            </p>
-            <div className="flex flex-wrap gap-2 mt-4">
-              {post.tags.map((tag, j) => (
-                <span
-                  key={j}
-                  className="font-mono-code text-[10px] px-2 py-1 rounded"
-                  style={{ background: 'var(--bg-secondary)', color: 'var(--accent-primary)' }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <span
-              className="inline-flex items-center gap-1 mt-4 text-sm font-medium transition-colors"
-              style={{ color: 'var(--accent-primary)' }}
-            >
-              Read More
-              <ExternalLink size={12} />
-            </span>
-          </a>
-        ))}
+              <span
+                className="font-mono-code text-[10px]"
+                style={{ color: 'var(--text-tertiary)' }}
+              >
+                {post.date}
+              </span>
+              <h3
+                className="font-display text-base font-medium mt-2"
+                style={{ color: 'var(--text-primary)' }}
+              >
+                {post.title}
+              </h3>
+              <p
+                className="text-sm mt-2 leading-relaxed"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                {post.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {post.tags.map((tag, j) => (
+                  <span
+                    key={j}
+                    className="font-mono-code text-[10px] px-2 py-1 rounded"
+                    style={{ background: 'var(--bg-secondary)', color: 'var(--accent-primary)' }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span
+                className="inline-flex items-center gap-1 mt-auto pt-4 text-sm font-medium transition-colors"
+                style={{ color: 'var(--accent-primary)' }}
+              >
+                Read More
+                <ExternalLink size={12} />
+              </span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

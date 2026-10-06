@@ -1,42 +1,34 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Monitor, Shield, Phone, Terminal, FileText, Network, ExternalLink } from 'lucide-react';
+import { Monitor, Shield, Phone, Terminal, FileText, Network, ExternalLink, Activity, Swords } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PROJECTS = [
   {
-    icon: Monitor,
-    category: 'SECURITY / MONITORING',
-    title: 'Enterprise Network Monitoring with Nagios',
-    description: 'Built a network monitoring and intrusion detection system using Nagios Core on a simulated enterprise network with GNS3. Real-time monitoring of devices, services, and network traffic.',
-    pills: ['Nagios', 'GNS3', 'SNMP', 'VMware'],
-    link: 'https://saadazil3.github.io/posts/nagios/',
+    icon: Swords,
+    category: 'OFFENSIVE / AD',
+    title: 'Active Directory Attack & Defense Lab',
+    description: 'Enterprise AD monitored with Wazuh. Simulated Mimikatz, Metasploit, and BloodHound attacks to test resilience against lateral movement, then analyzed alerts and recommended hardening.',
+    pills: ['Active Directory', 'Wazuh', 'Mimikatz', 'BloodHound', 'Metasploit'],
+    link: null,
   },
   {
     icon: Shield,
-    category: 'SECURITY / AD',
+    category: 'OFFENSIVE / AD',
     title: 'SMB Relay Attack in Active Directory',
     description: 'Simulated and executed an SMB Relay attack exploiting NTLM authentication vulnerabilities. Analyzed security risks and proposed comprehensive mitigation strategies.',
     pills: ['Active Directory', 'NTLM', 'Windows'],
-    link: '#',
+    link: null,
   },
   {
-    icon: Phone,
-    category: 'VOIP / NETWORKING',
-    title: 'IP-Based Telephony System with Asterisk',
-    description: 'Designed and configured an open-source IP-PBX server on Linux. Managed SIP infrastructure with IVR, voicemail, and conference rooms.',
-    pills: ['Asterisk', 'SIP', 'Linux', 'VoIP'],
-    link: 'https://saadazil3.github.io/posts/asterisk/',
-  },
-  {
-    icon: Terminal,
-    category: 'TOOL / PYTHON',
-    title: 'TCP Port Scanner',
-    description: 'Lightweight Python-based TCP port scanner with multi-port and port-range scanning, banner grabbing, and adjustable timeout support.',
-    pills: ['Python', 'Networking'],
-    link: 'https://github.com/SaadAzil3/port_scan',
+    icon: Network,
+    category: 'RED TEAM / C2',
+    title: 'Vanessa-C2 Command & Control',
+    description: 'Educational Command and Control framework built in Python for understanding adversary infrastructure and post-exploitation techniques.',
+    pills: ['Python', 'Security', 'Go'],
+    link: 'https://github.com/SaadAzil3/Vanessa-C2',
   },
   {
     icon: FileText,
@@ -47,12 +39,36 @@ const PROJECTS = [
     link: 'https://saadazil3.github.io/posts/nibbles/',
   },
   {
-    icon: Network,
-    category: 'SECURITY / PYTHON',
-    title: 'Vanessa-C2 Command & Control',
-    description: 'Educational Command and Control framework built in Python for understanding adversary infrastructure and post-exploitation techniques.',
-    pills: ['Python', 'Security', 'Go'],
-    link: 'https://github.com/SaadAzil3/Vanessa-C2',
+    icon: Terminal,
+    category: 'TOOL / PYTHON',
+    title: 'TCP Port Scanner',
+    description: 'Lightweight Python-based TCP port scanner with multi-port and port-range scanning, banner grabbing, and adjustable timeout support.',
+    pills: ['Python', 'Networking'],
+    link: 'https://github.com/SaadAzil3/port_scan',
+  },
+  {
+    icon: Activity,
+    category: 'SOC / SIEM',
+    title: 'Detection & Supervision Lab — SIEM',
+    description: 'ELK stack correlating Suricata, Zeek, and Sysmon events. Suricata rules mapped to MITRE ATT&CK TTPs, plus Kibana dashboards and KQL alerting for triage and threat hunting.',
+    pills: ['Elastic Stack', 'Suricata', 'Zeek', 'Sysmon', 'MITRE ATT&CK'],
+    link: null,
+  },
+  {
+    icon: Monitor,
+    category: 'SECURITY / MONITORING',
+    title: 'Enterprise Network Monitoring with Nagios',
+    description: 'IT supervision and intrusion detection strategy using Nagios Core on a simulated GNS3 enterprise network, with controls to detect malfunctions and anomalies, and documented procedures.',
+    pills: ['Nagios', 'GNS3', 'SNMP', 'VMware'],
+    link: 'https://saadazil3.github.io/posts/nagios/',
+  },
+  {
+    icon: Phone,
+    category: 'VOIP / NETWORKING',
+    title: 'IP-Based Telephony System with Asterisk',
+    description: 'Installed and configured an open-source IP-PBX on Linux. Administered the SIP infrastructure with IVR, voicemail, and conferencing, and implemented VoIP security policies with QoS monitoring.',
+    pills: ['Asterisk', 'SIP', 'Linux', 'VoIP'],
+    link: 'https://saadazil3.github.io/posts/asterisk/',
   },
 ];
 
@@ -100,12 +116,11 @@ export default function ProjectsSection() {
         <div className="proj-grid grid grid-cols-1 md:grid-cols-2 gap-6">
           {PROJECTS.map((project, i) => {
             const Icon = project.icon;
+            const Card = project.link ? 'a' : 'div';
             return (
-              <a
+              <Card
                 key={i}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(project.link && { href: project.link, target: '_blank', rel: 'noopener noreferrer' })}
                 className="proj-card group block p-6 rounded-lg transition-all duration-300"
                 style={{
                   background: 'var(--bg-primary)',
@@ -139,11 +154,11 @@ export default function ProjectsSection() {
                   style={{ color: 'var(--text-primary)' }}
                 >
                   {project.title}
-                  <ExternalLink
+                  {project.link && <ExternalLink
                     size={14}
                     className="opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{ color: 'var(--accent-primary)' }}
-                  />
+                  />}
                 </h3>
 
                 {/* Description */}
@@ -166,7 +181,7 @@ export default function ProjectsSection() {
                     </span>
                   ))}
                 </div>
-              </a>
+              </Card>
             );
           })}
         </div>

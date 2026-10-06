@@ -1,14 +1,16 @@
 import Marquee from 'react-fast-marquee';
 
 const ITEMS = [
-  { text: 'NETWORK SECUIRTY', highlight: false },
   { text: 'PENETRATION TESTING', highlight: true },
+  { text: 'WEB APP PENTESTING', highlight: false },
+  { text: 'NETWORK PENTESTING', highlight: false },
   { text: 'AZIL SAAD — SA3D00N', highlight: true },
-  { text: 'ETHICAL HACKING', highlight: false },
-  { text: 'APPLICATION SECURITY', highlight: false },
-  { text: 'CTF PLAYER', highlight: false },
+  { text: 'BUG BOUNTY', highlight: false },
+  { text: 'OFFENSIVE SECURITY', highlight: true },
   { text: 'ACTIVE DIRECTORY', highlight: false },
-  { text: 'BUG BOUNTY HUNTER', highlight: false },
+  { text: 'CTF PLAYER', highlight: false },
+  { text: 'AI SECURITY', highlight: false },
+  { text: 'RED TEAMING', highlight: false },
 ];
 
 export default function MarqueeStrip() {

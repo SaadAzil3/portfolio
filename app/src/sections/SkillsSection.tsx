@@ -6,25 +6,45 @@ gsap.registerPlugin(ScrollTrigger);
 
 const SKILL_CATEGORIES = [
   {
-    label: 'Technical Skills',
-    tags: ['IT Risk Analysis', 'Network Security', 'Infrastructure Monitoring', 'Cybersecurity', 'Penetration Testing', 'Access Management', 'VoIP', 'VPN', 'Firewalls', 'Linux & Windows Admin', 'Virtualization', 'Containerization', 'Web Security'],
-    featured: ['Penetration Testing', 'Cybersecurity', 'Network Security', 'Web Security'],
+    label: 'Offensive Security',
+    tags: ['Web App Pentesting', 'Network Pentesting', 'Bug Bounty', 'OWASP Top 10', 'Active Directory Attacks', 'Privilege Escalation', 'Exploitation', 'Vulnerability Analysis', 'Security Auditing', 'Risk Analysis'],
+    featured: ['Web App Pentesting', 'Network Pentesting', 'Bug Bounty'],
   },
   {
-    label: 'Tools & Platforms',
-    tags: ['pfSense', 'Wireshark', 'Nagios', 'Kali Linux', 'Cisco', 'GNS3', 'VMware', 'VirtualBox', 'Docker', 'Active Directory', 'Asterisk', 'Git & GitHub', 'Metasploit', 'Burp Suite', 'Nmap', 'SQLMap'],
-    featured: ['Kali Linux', 'Nmap', 'Wireshark', 'Metasploit'],
+    label: 'Offensive Tools',
+    tags: ['Burp Suite', 'Nmap', 'Metasploit', 'SQLMap', 'BloodHound', 'Mimikatz', 'Nessus', 'Wireshark', 'Kali Linux'],
+    featured: ['Burp Suite', 'Nmap', 'Metasploit'],
   },
   {
-    label: 'Programming',
-    tags: ['Python', 'Bash', 'Go'],
-    featured: ['Python'],
+    label: 'Currently Learning',
+    tags: ['AI Security', 'LLM Prompt Injection', 'Red Teaming', 'Adversary Emulation', 'C2 Frameworks'],
+    featured: ['AI Security', 'Red Teaming'],
+  },
+  {
+    label: 'Network Systems & Architectures',
+    tags: ['Windows & Linux Admin', 'TCP/IP', 'DNS', 'HTTP/S', 'VPN (IPsec / OpenVPN)', 'Active Directory', 'Firewalls', 'pfSense', 'VoIP', 'VMware', 'VirtualBox', 'Docker', 'GNS3', 'Cisco'],
+    featured: ['Active Directory'],
+  },
+  {
+    label: 'Detection & Defense',
+    tags: ['Wazuh XDR', 'Elastic Stack (ELK)', 'Suricata', 'Zeek', 'Nagios', 'IDS / IPS', 'Log Analysis'],
+    featured: [],
+  },
+  {
+    label: 'Scripting & Automation',
+    tags: ['Python', 'Bash', 'Go', 'MySQL', 'Git & GitHub'],
+    featured: ['Python', 'Bash'],
+  },
+  {
+    label: 'Languages',
+    tags: ['Arabic', 'French', 'English'],
+    featured: [],
   },
 ];
 
 const PROFICIENCY = [
-  { label: 'Network Security', value: 90 },
   { label: 'Penetration Testing', value: 85 },
+  { label: 'Network Security', value: 90 },
   { label: 'System Administration', value: 80 },
 ];
 

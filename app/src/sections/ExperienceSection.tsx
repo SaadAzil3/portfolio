@@ -8,12 +8,17 @@ gsap.registerPlugin(ScrollTrigger);
 const EXPERIENCE_ITEMS = [
   {
     date: 'Mar 2026',
-    title: 'Network and IT Security Intern',
+    title: 'IT Security Intern',
     company: 'ENAGEO',
     companyColor: true,
     location: 'Hassi Messaoud, Ouargla, Algeria',
-    description: 'Network and IT security internship in the energy sector, gaining hands-on experience with enterprise security infrastructure.',
-    bullets: [],
+    description: '',
+    bullets: [
+      'Administered and supervised the corporate network: equipment monitoring, network flow analysis, and security alert tracking',
+      'Collaborated with network, system, and IT support teams on daily administration and maintenance',
+      'Participated in diagnosing and resolving network and system incidents',
+      'Discovered IT security practices and operational processes in a corporate environment',
+    ],
     link: null,
   },
   {
@@ -22,9 +27,13 @@ const EXPERIENCE_ITEMS = [
     company: 'Hack The Box',
     companyColor: true,
     location: 'Remote',
-    description: 'Solving CTF challenges to perfect penetration testing skills. Intensively practicing ethical hacking on real-world attack scenarios.',
-    bullets: [],
-    link: { text: 'View HTB Profile', url: 'https://app.hackthebox.com/users/1543873' },
+    description: '',
+    bullets: [
+      'Solved machines and Capture The Flag (CTF) challenges',
+      'Analyzed and exploited vulnerabilities in Web applications, Linux, Windows, and Active Directory environments',
+      'Developed practical skills in penetration testing and offensive security',
+    ],
+    link: { text: 'View HTB Profile', url: 'https://profile.hackthebox.com/profile/019c9445-2a72-73eb-ad7a-f34ecbef7102' },
   },
   {
     date: 'Mar 2024 — Apr 2024',
@@ -34,10 +43,10 @@ const EXPERIENCE_ITEMS = [
     location: 'Bejaia, Algeria',
     description: '',
     bullets: [
-      'Simulated enterprise network architecture using GNS3',
-      'Conducted vulnerability assessments on Layer 2 enterprise networks',
-      'Implemented penetration testing to identify potential risks and proposed effective solutions',
-      'Delivered a detailed report on network vulnerabilities and mitigation strategies',
+      'Simulated a multi-site corporate network architecture using GNS3 and conducted security audits',
+      'Evaluated network vulnerabilities and performed penetration testing, identifying risks and proposing security measures',
+      'Designed network segmentation and developed security policies compliant with industry standards',
+      'Drafted a comprehensive audit report on identified vulnerabilities and delivered security artifacts',
     ],
     link: null,
   },
@@ -45,12 +54,12 @@ const EXPERIENCE_ITEMS = [
 
 const EDUCATION_ITEMS = [
   {
-    date: 'Oct 2024 — Jul 2026',
+    date: 'Oct 2024 — Jun 2026',
     title: "Master's in Network Administration & Security",
     company: 'University of Bejaia',
     companyColor: true,
     location: 'Bejaia, Algeria',
-    description: 'Focus: Network Security, Network Administration, Cybersecurity, Advanced Programming, LAN',
+    description: 'Focus: IT Security, Network Administration, Cybersecurity, Advanced Programming, Cryptography, LAN',
     bullets: [],
     link: null,
   },

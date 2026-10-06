@@ -44,7 +44,7 @@ export default function HeroSection() {
           className="hero-label font-mono-code text-xs uppercase tracking-[0.15em] mb-8"
           style={{ color: 'var(--accent-primary)' }}
         >
-          Penetration Tester
+          Penetration Tester · Offensive Security
         </p>
 
         {/* Name */}

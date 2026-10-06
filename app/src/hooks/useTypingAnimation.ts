@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
 const PHRASES = [
-  'securing networks | building tools | hunting threats',
-  'penetration testing | vulnerability analysis | ctf player',
+  'web pentesting | network pentesting | bug bounty',
+  'breaking in to make it secure | offensive security',
+  'next up: ai security | red teaming',
 ];
 
 const TYPE_SPEED = 50;

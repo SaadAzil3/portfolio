@@ -1,17 +1,20 @@
-import { Linkedin, Github, BookOpen, ExternalLink } from 'lucide-react';
+import { Linkedin, Github, BookOpen, ExternalLink, Twitter } from 'lucide-react';
+import HackTheBoxIcon from './HackTheBoxIcon';
 
 const QUICK_LINKS = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/saad-azil-1349aa250/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/saadazil/' },
   { label: 'GitHub', href: 'https://github.com/SaadAzil3' },
   { label: 'Blog', href: 'https://saadazil3.github.io/' },
-  { label: 'Hack The Box', href: 'https://app.hackthebox.com/users/1543873' },
+  { label: 'Hack The Box', href: 'https://profile.hackthebox.com/profile/019c9445-2a72-73eb-ad7a-f34ecbef7102' },
+  { label: 'X/Twitter', href: 'https://x.com/azil_saad' },
 ];
 
 const ICON_MAP: Record<string, React.ElementType> = {
   LinkedIn: Linkedin,
   GitHub: Github,
   Blog: BookOpen,
-  'Hack The Box': ExternalLink,
+  'Hack The Box': HackTheBoxIcon,
+  'X/Twitter': Twitter,
 };
 
 export default function Footer() {
@@ -55,10 +58,10 @@ export default function Footer() {
               Azil Saad
             </p>
             <p className="font-mono-code text-xs mt-1" style={{ color: 'var(--text-tertiary)' }}>
-              Cybersecurity Practitioner
+              Penetration Tester · Offensive Security
             </p>
             <p className="font-mono-code text-xs mt-1" style={{ color: 'var(--text-tertiary)' }}>
-              Bejaia, Algeria
+              Algiers, Algeria
             </p>
           </div>
 

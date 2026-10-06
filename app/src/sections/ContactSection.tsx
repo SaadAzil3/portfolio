@@ -2,19 +2,21 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Phone, MapPin, Linkedin, Github, BookOpen, Twitter } from 'lucide-react';
+import HackTheBoxIcon from '../components/HackTheBoxIcon';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CONTACT_CARDS = [
   { icon: Mail, label: 'EMAIL', value: 'azilsaad06@gmail.com', href: 'mailto:azilsaad06@gmail.com' },
   { icon: Phone, label: 'PHONE', value: '+213 676 164 995', href: 'tel:+213676164995' },
-  { icon: MapPin, label: 'LOCATION', value: 'Bejaia, Algeria', href: null },
+  { icon: MapPin, label: 'LOCATION', value: 'Algiers, Algeria', href: null },
 ];
 
 const SOCIAL_LINKS = [
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/saad-azil-1349aa250/' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/saadazil/' },
   { icon: Github, label: 'GitHub', href: 'https://github.com/SaadAzil3' },
   { icon: BookOpen, label: 'Blog', href: 'https://saadazil3.github.io/' },
+  { icon: HackTheBoxIcon, label: 'Hack The Box', href: 'https://profile.hackthebox.com/profile/019c9445-2a72-73eb-ad7a-f34ecbef7102' },
   { icon: Twitter, label: 'X/Twitter', href: 'https://x.com/azil_saad' },
 ];
 
@@ -76,7 +78,7 @@ export default function ContactSection() {
             const Icon = card.icon;
             const content = (
               <div
-                className="contact-card p-8 rounded-lg transition-all duration-300 text-center"
+                className="contact-card px-4 py-8 rounded-lg transition-all duration-300 text-center"
                 style={{
                   background: 'var(--bg-secondary)',
                   border: '1px solid var(--border-subtle)',
@@ -98,7 +100,7 @@ export default function ContactSection() {
                   {card.label}
                 </span>
                 <span
-                  className="text-lg font-medium mt-1 block"
+                  className="text-lg md:text-base lg:text-lg font-medium mt-1 block [overflow-wrap:anywhere]"
                   style={{ color: 'var(--text-primary)' }}
                 >
                   {card.value}

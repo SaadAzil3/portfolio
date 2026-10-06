@@ -2,9 +2,11 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin } from 'lucide-react';
-import aboutImage from '../../images/about_me_image.png';
+import aboutImage from '../../images/about_me_image.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const LEARNING = ['AI Security', 'Red Teaming'];
 
 const STATS = [
   { number: '4+', label: 'Security Projects' },
@@ -68,7 +70,7 @@ export default function AboutSection() {
             <div className="flex items-center gap-2 mt-4 justify-center md:justify-start">
               <MapPin size={14} style={{ color: 'var(--text-tertiary)' }} />
               <span className="font-mono-code text-xs" style={{ color: 'var(--text-tertiary)' }}>
-                Bejaia, Algeria
+                Algiers, Algeria
               </span>
             </div>
           </div>
@@ -80,16 +82,32 @@ export default function AboutSection() {
               className="about-text font-display font-medium uppercase leading-none tracking-[-0.02em] mb-8"
               style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', color: 'var(--text-primary)' }}
             >
-              <span style={{ color: 'var(--accent-primary)' }}>Pentester</span>, Security Researcher, Network Security Enthusiast 
+              <span style={{ color: 'var(--accent-primary)' }}>Pentester</span>, Bug Bounty Hunter, Offensive Security 
             </h2>
 
             <p className="about-text text-lg leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
-              I'm Azil Saad (SA3D00N) — a cybersecurity practitioner and Master's student in Network Administration & Security at the University of Bejaia, Algeria. I specialize in penetration testing and network security with real-world experience from both academic projects and industry internships.
+              I'm Azil Saad (SA3D00N) — a penetration tester focused on offensive security. I spend my time on web application and network pentesting, bug bounty hunting, and Active Directory attacks, backed by a Master's degree in Network Administration & Security from the University of Bejaia, Algeria.
             </p>
 
-            <p className="about-text leading-relaxed mb-12" style={{ color: 'var(--text-secondary)' }}>
-              Pursuing a Master's in Network Administration & Security (2024–2026). Former Network Security Intern at Cevital Agro-industrie — one of Algeria's largest enterprises. Active CTF Player on HackTheBox. Certified Network Security Practitioner (CNSP). Open to collaboration on security research, CTF challenges & write-ups.
+            <p className="about-text leading-relaxed mb-8" style={{ color: 'var(--text-secondary)' }}>
+              I sharpen my skills as an active CTF player on Hack The Box, and I've applied them in industry as a Network Security Intern at Cevital Agro-industrie, where I ran penetration tests and security audits, and as an IT Security Intern at ENAGEO. Certified Network Security Practitioner (CNSP). My background in network administration and detection (SIEM, Wazuh) helps me think about how attacks are seen from the defender's side.
             </p>
+
+            {/* Currently Learning */}
+            <div className="about-text flex flex-wrap items-center gap-2 mb-12">
+              <span className="font-mono-code text-xs uppercase tracking-[0.1em] mr-2" style={{ color: 'var(--text-tertiary)' }}>
+                Currently learning:
+              </span>
+              {LEARNING.map((topic) => (
+                <span
+                  key={topic}
+                  className="font-mono-code text-xs px-3 py-1 rounded"
+                  style={{ border: '1px dashed rgba(0, 229, 160, 0.5)', color: 'var(--accent-primary)' }}
+                >
+                  {topic}
+                </span>
+              ))}
+            </div>
 
             {/* Stats */}
             <div className="about-stats grid grid-cols-2 md:grid-cols-4 gap-4">
