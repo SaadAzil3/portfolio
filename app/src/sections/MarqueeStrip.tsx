@@ -1,7 +1,8 @@
 import Marquee from 'react-fast-marquee';
 
 const ITEMS = [
-  { text: 'PENETRATION TESTING', highlight: true },
+  { text: 'SOC ANALYST', highlight: true },
+  { text: 'PENETRATION TESTING', highlight: false },
   { text: 'WEB APP PENTESTING', highlight: false },
   { text: 'NETWORK PENTESTING', highlight: false },
   { text: 'AZIL SAAD — SA3D00N', highlight: true },

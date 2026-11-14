@@ -16,7 +16,7 @@ export default function MatrixRain() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let animationId: number;
     let columns: { y: number; speed: number; chars: string[] }[] = [];
-    let fontSize = 14;
+    const fontSize = 14;
 
     const resize = () => {
       canvas.width = window.innerWidth;

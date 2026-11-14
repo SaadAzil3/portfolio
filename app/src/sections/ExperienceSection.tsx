@@ -1,15 +1,34 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Award, ExternalLink } from 'lucide-react';
+import { Award, CalendarDays, ExternalLink, FileText, MapPin } from 'lucide-react';
+import cybearsLogo from '../../images/logos/cybears.jpeg';
+import enageoLogo from '../../images/logos/enageo.jpeg';
+import htbLogo from '../../images/logos/htb.jpeg';
+import cevitalLogo from '../../images/logos/cevital.jpeg';
+import univBejaiaLogo from '../../images/logos/univ-bejaia.png';
+import cymaenCertPdf from '../../images/certificates/cymaen26-author-certificate.pdf';
+import cymaenCertPreview from '../../images/certificates/cymaen26-author-certificate.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const EXPERIENCE_ITEMS = [
   {
+    date: 'Oct 2026 — Present',
+    title: 'SOC Analyst',
+    company: 'Cybears',
+    logo: cybearsLogo as string | null,
+    companyColor: true,
+    location: '',
+    description: '',
+    bullets: [] as string[],
+    link: null as { text: string; url: string } | null,
+  },
+  {
     date: 'Mar 2026',
     title: 'IT Security Intern',
     company: 'ENAGEO',
+    logo: enageoLogo,
     companyColor: true,
     location: 'Hassi Messaoud, Ouargla, Algeria',
     description: '',
@@ -25,6 +44,7 @@ const EXPERIENCE_ITEMS = [
     date: 'Jul 2025 — Present',
     title: 'CTF Player',
     company: 'Hack The Box',
+    logo: htbLogo,
     companyColor: true,
     location: 'Remote',
     description: '',
@@ -39,6 +59,7 @@ const EXPERIENCE_ITEMS = [
     date: 'Mar 2024 — Apr 2024',
     title: 'Network Security Intern',
     company: 'Cevital Agro-industrie',
+    logo: cevitalLogo,
     companyColor: true,
     location: 'Bejaia, Algeria',
     description: '',
@@ -57,6 +78,7 @@ const EDUCATION_ITEMS = [
     date: 'Oct 2024 — Jun 2026',
     title: "Master's in Network Administration & Security",
     company: 'University of Bejaia',
+    logo: univBejaiaLogo,
     companyColor: true,
     location: 'Bejaia, Algeria',
     description: 'Focus: IT Security, Network Administration, Cybersecurity, Advanced Programming, Cryptography, LAN',
@@ -67,6 +89,7 @@ const EDUCATION_ITEMS = [
     date: 'Dec 2021 — Jun 2024',
     title: "Bachelor's in Computer Science",
     company: 'University of Bejaia',
+    logo: univBejaiaLogo,
     companyColor: false,
     location: 'Bejaia, Algeria',
     description: 'Focus: Web Development, Database Administration, Networking, Cryptography',
@@ -75,7 +98,19 @@ const EDUCATION_ITEMS = [
   },
 ];
 
-function TimelineCard({ item, index }: { item: typeof EXPERIENCE_ITEMS[0]; index: number }) {
+const PUBLICATION = {
+  type: 'Conference Paper · Author',
+  title: 'Network-Level Detectability of Telegram- and Discord-Based Command-and-Control Channels',
+  venue: 'IEEE 2026 International Conference on Cyber Management and Engineering',
+  venueShort: 'CyMaEn 26',
+  date: 'Oct 11 — 13, 2026',
+  location: 'Tlemcen, Algeria',
+  topics: ['Command & Control', 'Network Detection', 'Telegram', 'Discord'],
+  certificate: cymaenCertPdf,
+  preview: cymaenCertPreview,
+};
+
+function TimelineCard({ item, index, nodeClass }: { item: typeof EXPERIENCE_ITEMS[0]; index: number; nodeClass: string }) {
   const isLeft = index % 2 === 0;
   return (
     <div
@@ -84,7 +119,7 @@ function TimelineCard({ item, index }: { item: typeof EXPERIENCE_ITEMS[0]; index
     >
       {/* Node */}
       <div
-        className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 z-10"
+        className={`${nodeClass} absolute left-4 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 z-10`}
         style={{ background: 'var(--accent-primary)', top: '1.5rem' }}
       />
 
@@ -99,30 +134,47 @@ function TimelineCard({ item, index }: { item: typeof EXPERIENCE_ITEMS[0]; index
           onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent-primary)'; }}
           onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
         >
-          <span
-            className="font-mono-code text-xs"
-            style={{ color: 'var(--text-tertiary)' }}
-          >
-            {item.date}
-          </span>
-          <h3
-            className="font-display text-lg font-medium mt-2"
-            style={{ color: 'var(--text-primary)' }}
-          >
-            {item.title}
-          </h3>
-          <p
-            className="text-sm font-semibold mt-1"
-            style={{ color: item.companyColor ? 'var(--accent-primary)' : 'var(--text-secondary)' }}
-          >
-            {item.company}
-          </p>
-          <p
-            className="font-mono-code text-xs mt-1"
-            style={{ color: 'var(--text-tertiary)' }}
-          >
-            {item.location}
-          </p>
+          <div className="flex items-start gap-4">
+            {item.logo && (
+              <img
+                src={item.logo}
+                alt={`${item.company} logo`}
+                width={48}
+                height={48}
+                loading="lazy"
+                className="w-12 h-12 rounded-md object-cover flex-shrink-0"
+                style={{ border: '1px solid var(--border-subtle)', background: '#fff' }}
+              />
+            )}
+            <div className="min-w-0">
+              <span
+                className="font-mono-code text-xs"
+                style={{ color: 'var(--text-tertiary)' }}
+              >
+                {item.date}
+              </span>
+              <h3
+                className="font-display text-lg font-medium mt-2"
+                style={{ color: 'var(--text-primary)' }}
+              >
+                {item.title}
+              </h3>
+              <p
+                className="text-sm font-semibold mt-1"
+                style={{ color: item.companyColor ? 'var(--accent-primary)' : 'var(--text-secondary)' }}
+              >
+                {item.company}
+              </p>
+              {item.location && (
+                <p
+                  className="font-mono-code text-xs mt-1"
+                  style={{ color: 'var(--text-tertiary)' }}
+                >
+                  {item.location}
+                </p>
+              )}
+            </div>
+          </div>
           {item.description && (
             <p className="text-sm mt-3 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               {item.description}
@@ -156,9 +208,10 @@ function TimelineCard({ item, index }: { item: typeof EXPERIENCE_ITEMS[0]; index
   );
 }
 
-function Timeline({ items, itemClass, lineClass }: {
+function Timeline({ items, itemClass, lineClass, nodeClass }: {
   items: typeof EXPERIENCE_ITEMS;
   itemClass: string;
+  nodeClass: string;
   lineClass: string;
 }) {
   return (
@@ -177,7 +230,7 @@ function Timeline({ items, itemClass, lineClass }: {
       <div className="space-y-12">
         {items.map((item, i) => (
           <div key={i} className={itemClass}>
-            <TimelineCard item={item} index={i} />
+            <TimelineCard item={item} index={i} nodeClass={nodeClass} />
           </div>
         ))}
       </div>
@@ -243,6 +296,19 @@ export default function ExperienceSection() {
         }
       );
 
+      gsap.fromTo('.cred-header',
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: '.cred-header', start: 'top 80%' },
+        }
+      );
+      gsap.fromTo('.exp-pub',
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: '.exp-pub', start: 'top 80%' },
+        }
+      );
+
       gsap.fromTo('.exp-cert',
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
@@ -277,6 +343,7 @@ export default function ExperienceSection() {
           <Timeline
             items={EXPERIENCE_ITEMS}
             itemClass="exp-item"
+            nodeClass="exp-node"
             lineClass="exp-line"
           />
         </div>
@@ -297,13 +364,112 @@ export default function ExperienceSection() {
           <Timeline
             items={EDUCATION_ITEMS}
             itemClass="edu-item"
+            nodeClass="edu-node"
             lineClass="edu-line"
           />
         </div>
 
+        {/* Research & Certifications Header */}
+        <div id="credentials" className="cred-header mt-24 mb-16">
+          <span className="section-label block mb-4">// RESEARCH &amp; CERTIFICATIONS</span>
+          <h2
+            className="font-display font-medium uppercase tracking-[-0.02em]"
+            style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', color: 'var(--text-primary)' }}
+          >
+            What I've Earned
+          </h2>
+        </div>
+
+        {/* Publication Card */}
+        <article
+          className="exp-pub rounded-lg overflow-hidden grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] transition-colors duration-300 hover:border-[var(--accent-primary)]"
+          style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}
+        >
+          {/* Certificate preview */}
+          <a
+            href={PUBLICATION.certificate}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open the ${PUBLICATION.venueShort} author certificate (PDF)`}
+            className="group relative flex items-center justify-center p-6 md:p-8"
+            style={{ background: 'var(--bg-tertiary)' }}
+          >
+            <img
+              src={PUBLICATION.preview}
+              alt={`Author certificate issued by ${PUBLICATION.venueShort} to Saad Azil`}
+              width={1400}
+              height={991}
+              loading="lazy"
+              className="w-full h-auto rounded transition-transform duration-500 group-hover:scale-[1.02]"
+              style={{ boxShadow: '0 12px 40px rgba(0, 0, 0, 0.5)' }}
+            />
+            <span
+              className="absolute inset-0 flex items-center justify-center gap-2 font-mono-code text-xs uppercase tracking-[0.1em] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+              style={{ background: 'rgba(10, 10, 10, 0.7)', color: 'var(--accent-primary)' }}
+            >
+              <FileText size={16} />
+              Open PDF
+            </span>
+          </a>
+
+          {/* Details */}
+          <div className="p-6 md:p-10 flex flex-col justify-center">
+            <span
+              className="font-mono-code text-xs uppercase tracking-[0.1em]"
+              style={{ color: 'var(--accent-primary)' }}
+            >
+              {PUBLICATION.type}
+            </span>
+            <h3
+              className="font-display text-xl md:text-2xl font-medium mt-3 leading-snug"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              {PUBLICATION.title}
+            </h3>
+            <p className="text-sm mt-4 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              Presented at the {PUBLICATION.venue}{' '}
+              <span style={{ color: 'var(--text-primary)' }}>({PUBLICATION.venueShort})</span>.
+            </p>
+            <div
+              className="flex flex-wrap gap-x-6 gap-y-2 mt-4 font-mono-code text-xs"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              <span className="inline-flex items-center gap-2">
+                <CalendarDays size={14} style={{ color: 'var(--accent-primary)' }} />
+                {PUBLICATION.date}
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <MapPin size={14} style={{ color: 'var(--accent-primary)' }} />
+                {PUBLICATION.location}
+              </span>
+            </div>
+            <ul className="flex flex-wrap gap-2 mt-6">
+              {PUBLICATION.topics.map((topic) => (
+                <li
+                  key={topic}
+                  className="font-mono-code text-xs px-3 py-1 rounded"
+                  style={{ border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
+                >
+                  {topic}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <a
+                href={PUBLICATION.certificate}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-xs whitespace-nowrap"
+              >
+                View Author Certificate →
+              </a>
+            </div>
+          </div>
+        </article>
+
         {/* Certification Banner */}
         <div
-          className="exp-cert mt-24 p-8 rounded-lg flex flex-col md:flex-row items-start md:items-center gap-6"
+          className="exp-cert mt-8 p-8 rounded-lg flex flex-col md:flex-row items-start md:items-center gap-6"
           style={{
             background: 'linear-gradient(135deg, var(--bg-secondary) 0%, rgba(0, 229, 160, 0.05) 100%)',
             border: '1px solid rgba(0, 229, 160, 0.3)',

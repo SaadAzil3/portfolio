@@ -11,7 +11,7 @@ const LEARNING = ['AI Security', 'Red Teaming'];
 const STATS = [
   { number: '4+', label: 'Security Projects' },
   { number: '12', label: 'GitHub Repos' },
-  { number: '0.5+', label: 'Years Experience' },
+  { number: '1', label: 'IEEE Conference Paper' },
   { number: '1', label: 'Certification' },
 ];
 
@@ -82,15 +82,15 @@ export default function AboutSection() {
               className="about-text font-display font-medium uppercase leading-none tracking-[-0.02em] mb-8"
               style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', color: 'var(--text-primary)' }}
             >
-              <span style={{ color: 'var(--accent-primary)' }}>Pentester</span>, Bug Bounty Hunter, Offensive Security 
+              <span style={{ color: 'var(--accent-primary)' }}>SOC Analyst</span>, Pentester, Security Researcher
             </h2>
 
             <p className="about-text text-lg leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
-              I'm Azil Saad (SA3D00N) — a penetration tester focused on offensive security. I spend my time on web application and network pentesting, bug bounty hunting, and Active Directory attacks, backed by a Master's degree in Network Administration & Security from the University of Bejaia, Algeria.
+              I'm Azil Saad (SA3D00N) — a SOC Analyst at Cybears with an offensive security background. Outside the SOC, I spend my time on web application and network pentesting, bug bounty hunting, and Active Directory attacks, backed by a Master's degree in Network Administration & Security from the University of Bejaia, Algeria.
             </p>
 
             <p className="about-text leading-relaxed mb-8" style={{ color: 'var(--text-secondary)' }}>
-              I sharpen my skills as an active CTF player on Hack The Box, and I've applied them in industry as a Network Security Intern at Cevital Agro-industrie, where I ran penetration tests and security audits, and as an IT Security Intern at ENAGEO. Certified Network Security Practitioner (CNSP). My background in network administration and detection (SIEM, Wazuh) helps me think about how attacks are seen from the defender's side.
+              I authored a paper on the network-level detectability of Telegram- and Discord-based command-and-control channels, presented at the IEEE CyMaEn 26 conference. I sharpen my skills as an active CTF player on Hack The Box, and I previously worked as a Network Security Intern at Cevital Agro-industrie, where I ran penetration tests and security audits, and as an IT Security Intern at ENAGEO. Certified Network Security Practitioner (CNSP). Knowing how attacks are built helps me spot them from the defender's side.
             </p>
 
             {/* Currently Learning */}
